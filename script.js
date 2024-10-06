@@ -57,16 +57,19 @@ const styleMod = `
     }
 `
 const styleSheet = document.createElement("style");
+
+let audioLua = new Audio('lua.mp3');
+
 callStyle(styleTemp);
 document.head.appendChild(styleSheet);
 
-let audioPop = new Audio('pop.mp3');
-let audioLua = new Audio('lua.mp3');
-document.querySelector("div").addEventListener('mouseover', e => {
+function pop() {
+    let audioPop = new Audio(`cat-pop-${Math.ceil(Math.random() * 4)}.mp3`);
     audioPop.play();
-});
-function mouseClick(){
-    if(document.querySelector("#def").src != "cat_rainbow.gif") {
+}
+
+function mouseClick() {
+    if (document.querySelector("#def").src != "cat_rainbow.gif") {
         document.querySelector("#def").src = "cat_rainbow.gif";
         audioLua.play();
         callStyle(styleMod);
@@ -76,7 +79,8 @@ function mouseClick(){
         callStyle(styleTemp);
     }
 }
-function mouseLeave(){
+
+function mouseLeave() {
     document.querySelector("#def").src = "pop-cat-empty.ico";
     audioLua.pause();
     callStyle(styleTemp);
